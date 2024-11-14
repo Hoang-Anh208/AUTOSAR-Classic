@@ -26,6 +26,8 @@ Mỗi SWC chứa nhiều chương trình, logic ứng dụng của hệ thống 
 
 SWC giao tiếp với phần cứng thông qua RTE.
 
+<br>
+
 ### Runtime Enviroment (RTE)
 
 RTE đóng vai trò quan trọng trong việc kết nối Software Components (SWC) và Basic Software (BSW) thông qua một kiến trúc trừu tượng.
@@ -37,6 +39,8 @@ Ví dụ:
 - 1 SWC cần gửi dữ liệu qua giao thức CAN: SWC sẽ gửi yêu cầu này qua cổng của mình, RTE sẽ ánh xạ tới lớp CAN Driver trong MCAL của BSW.
 - SWC cần đọc cảm biến: RTE sẽ ánh xạ yêu cầu này tới lớp Driver của cảm biến trong MCAL.
 
+<br>
+
 ### Basic software (BSW)
 
 Basic Software (BSW) là một trong ba thành phần chính của kiến trúc AUTOSAR, đóng vai trò nền tảng để hỗ trợ phần mềm ứng dụng (SWC) hoạt động trên phần cứng. BSW cung cấp các dịch vụ cơ bản như quản lý phần cứng, giao tiếp, chẩn đoán, và các dịch vụ hệ thống.
@@ -47,6 +51,8 @@ BSW được chia thành 3 lớp chính:
 - **ECU Abstraction Layer** (Lớp trừu tượng hóa ECU).
 - **Microcontroller Abstraction Layer - MCAL** (lớp trừu tượng hóa vi điều khiển)
 
+<br>
+
 #### Service Layer
 
 Đây là lớp cao nhất trong BSW, cung cấp các dịch vụ hệ thống và tiện ích cho các phần mềm ứng dụng (SWC) và các lớp khác của BSW. Các dịch vụ này bao gồm quản lý thời gian thực, chẩn đoán, quản lý lỗi, quản lý nguồn, v.v.
@@ -55,6 +61,8 @@ BSW được chia thành 3 lớp chính:
 - **Memory Services**: Quản lý bộ nhớ không chỉ đọc/ghi mà còn các dịch vụ liên quan đến bảo mật dữ liệu, như Flash EEPROM.
 - **Diagnostic Services**: Quản lý và xử lý chẩn đoán hệ thống, bao gồm chẩn đoán giao tiếp và xử lý lỗi.
 
+<br>
+
 #### ECU Abstraction Layer
 
 Lớp này cung cấp một giao diện trừu tượng cho tất cả các thiết bị ngoại vi và phần cứng cụ thể của ECU. Nó ẩn đi sự khác biệt về phần cứng của các thiết bị ngoại vi khác nhau và cung cấp một giao diện tiêu chuẩn cho các lớp bên trên (Service Layer và SWC).
@@ -62,6 +70,8 @@ Lớp này cung cấp một giao diện trừu tượng cho tất cả các thi�
 - **I/O Hardware Abstraction (IoHwAb)**: Cung cấp khả năng đọc/ghi dữ liệu từ các thiết bị ngoại vi như cảm biến và bộ truyền động.
 - **Communication Hardware Abstraction**: Hỗ trợ giao tiếp với các mạng truyền thông khác nhau, ví dụ như các giao thức truyền thông nội bộ ECU hoặc mạng xe.
 - **Memory Hardware Abstraction**: Cung cấp giao diện để truy cập các loại bộ nhớ khác nhau mà không quan tâm đến cách thức thực hiện cụ thể.
+
+<br>
 
 #### MCAL
 
