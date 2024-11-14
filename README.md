@@ -46,8 +46,27 @@ BSW được chia thành 3 lớp chính:
 
 #### Service Layer
 
+Đây là lớp cao nhất trong BSW, cung cấp các dịch vụ hệ thống và tiện ích cho các phần mềm ứng dụng (SWC) và các lớp khác của BSW. Các dịch vụ này bao gồm quản lý thời gian thực, chẩn đoán, quản lý lỗi, quản lý nguồn, v.v.
+
+- **OS (Operating System)**: Cung cấp các chức năng của hệ điều hành thời gian thực, bao gồm quản lý task, quản lý tài nguyên và đồng bộ hóa.
+- **Memory Services**: Quản lý bộ nhớ không chỉ đọc/ghi mà còn các dịch vụ liên quan đến bảo mật dữ liệu, như Flash EEPROM.
+- **Diagnostic Services**: Quản lý và xử lý chẩn đoán hệ thống, bao gồm chẩn đoán giao tiếp và xử lý lỗi.
+
 #### ECU Abstraction Layer
+
+Lớp này cung cấp một giao diện trừu tượng cho tất cả các thiết bị ngoại vi và phần cứng cụ thể của ECU. Nó ẩn đi sự khác biệt về phần cứng của các thiết bị ngoại vi khác nhau và cung cấp một giao diện tiêu chuẩn cho các lớp bên trên (Service Layer và SWC).
+
+- **I/O Hardware Abstraction (IoHwAb)**: Cung cấp khả năng đọc/ghi dữ liệu từ các thiết bị ngoại vi như cảm biến và bộ truyền động.
+- **Communication Hardware Abstraction**: Hỗ trợ giao tiếp với các mạng truyền thông khác nhau, ví dụ như các giao thức truyền thông nội bộ ECU hoặc mạng xe.
+- **Memory Hardware Abstraction**: Cung cấp giao diện để truy cập các loại bộ nhớ khác nhau mà không quan tâm đến cách thức thực hiện cụ thể.
 
 #### MCAL
 
+Đây là lớp thấp nhất trong BSW, cung cấp giao diện trừu tượng để tương tác trực tiếp với các thành phần phần cứng của vi điều khiển, chẳng hạn như bộ xử lý trung tâm (CPU), các thiết bị ngoại vi tích hợp (như ADC, PWM, UART), và các bộ định thời (timer).
 
+- **Microcontroller Drivers**: Điều khiển các tính năng cụ thể của vi điều khiển như bộ định thời (timer), bộ watchdog.
+- **Memory Drivers**: Hỗ trợ giao tiếp, cấu hình với các bộ nhớ khác nhau như RAM, EEPROM, Flash, v.v.
+- **Crypto Drivers**: Cung cấp các chức năng mã hóa hoặc giải mã.
+- **Wireless Communication Drivers**: Hỗ trợ các giao thức truyền thông không dây như Bluetooth, WiFi.
+- **Communication Drivers**: Hỗ trợ giao tiếp với CAN, LIN, SPI, Ethernet, v.v.
+- **I/O Drivers**: Cung cấp cấu hình về ADC, PWM, ICU, v.v, .
