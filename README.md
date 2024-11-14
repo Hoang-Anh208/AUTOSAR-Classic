@@ -16,10 +16,15 @@ AUTOSAR được chia làm 2 loại:
 
 ### Application layer
 
-Application layer (lớp ứng dụng) là một thành phần quan trọng trong kiến ​​trúc phần mềm tổng thể của các hệ thống ô tô, bao gồm nhiều thành phần phần mềm (Software Component - SWC) thực hiện tập hợp các tác vụ để hoàn thành chức năng của xe. Mỗi SWC chứa nhiều chương trình có thể chạy được. Các thành phần phần mềm (SWC) này được kết nối với sự trợ giúp của các cổng (Ports). Các cổng này cung cấp khả năng giao tiếp giữa hai SWC cũng như với BSW.
+Application layer (lớp ứng dụng) là một thành phần quan trọng trong kiến ​​trúc phần mềm tổng thể của các hệ thống ô tô, bao gồm nhiều thành phần phần mềm (Software Component - SWC) thực hiện tập hợp các tác vụ để hoàn thành chức năng của xe.
 
-![image](https://github.com/user-attachments/assets/4af64466-7c55-4c37-8ea8-a792fbb07e5d)
+<br>
 
+Mỗi SWC chứa nhiều chương trình, logic ứng dụng của hệ thống và không tương tác trực tiếp với phần cứng.
+
+<br>
+
+SWC giao tiếp với phần cứng thông qua RTE.
 
 ### Runtime Enviroment (RTE)
 
@@ -31,8 +36,6 @@ Ví dụ:
 
 - 1 SWC cần gửi dữ liệu qua giao thức CAN: SWC sẽ gửi yêu cầu này qua cổng của mình, RTE sẽ ánh xạ tới lớp CAN Driver trong MCAL của BSW.
 - SWC cần đọc cảm biến: RTE sẽ ánh xạ yêu cầu này tới lớp Driver của cảm biến trong MCAL.
-
-
 
 ### Basic software (BSW)
 
