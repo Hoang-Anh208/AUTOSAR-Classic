@@ -67,7 +67,7 @@ BSW được chia thành 3 lớp chính:
 
 Lớp này cung cấp một giao diện trừu tượng cho tất cả các thiết bị ngoại vi và phần cứng cụ thể của ECU. Nó ẩn đi sự khác biệt về phần cứng của các thiết bị ngoại vi khác nhau và cung cấp một giao diện tiêu chuẩn cho các lớp bên trên (Service Layer và SWC).
 
-- **I/O Hardware Abstraction (IoHwAb)**: Cung cấp khả năng đọc/ghi dữ liệu từ các thiết bị ngoại vi như cảm biến và bộ truyền động.
+- **I/O Hardware Abstraction (IoHwAb)**: đóng vai trò giao tiếp SWC và phần cứng, giúp trừu tượng hóa việc truy cập các thiết bị ngoại vi. Nó sẽ chuyển đổi các yêu cầu từ SWC thành các lệnh mà phần cứng có thể hiểu, giúp ứng dụng có thể dễ dàng tương thích với nhiều loại phần cứng khác nhau.
 - **Communication Hardware Abstraction**: Hỗ trợ giao tiếp với các mạng truyền thông khác nhau, ví dụ như các giao thức truyền thông nội bộ ECU hoặc mạng xe.
 - **Memory Hardware Abstraction**: Cung cấp giao diện để truy cập các loại bộ nhớ khác nhau mà không quan tâm đến cách thức thực hiện cụ thể.
 
