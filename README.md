@@ -83,3 +83,8 @@ Lớp này cung cấp một giao diện trừu tượng cho tất cả các thi�
 - **Wireless Communication Drivers**: Hỗ trợ các giao thức truyền thông không dây như Bluetooth, WiFi.
 - **Communication Drivers**: Hỗ trợ giao tiếp với CAN, LIN, SPI, Ethernet, v.v.
 - **I/O Drivers**: Cung cấp cấu hình về ADC, PWM, ICU, v.v, .
+
+
+```cpp
+int x = 5;
+```
