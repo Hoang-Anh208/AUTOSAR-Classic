@@ -86,5 +86,55 @@ Lớp này cung cấp một giao diện trừu tượng cho tất cả các thi�
 
 
 ```cpp
-int x = 5;
+#include <stdio.h>
+#include <setjmp.h>
+
+jmp_buf buf;
+
+int exception;
+
+#define TRY if ((exception = setjmp(buf)) == 0)
+#define CATCH(x) else if (exception == x)
+#define THROW(x) longjmp(buf, x)
+
+typedef enum
+{
+    NO_ERROR,
+    NO_EXIT,
+    DIVIDE_BY_ZERO
+} ErrorCodes;
+
+double divide(int a, int b)
+{
+    if (a == 0 && b == 0)
+    {
+        THROW(NO_EXIT);
+    }
+    else if (b == 0)
+    {
+        THROW(DIVIDE_BY_ZERO);
+    }
+
+    return (double)a/b;
+}
+
+int main(int argc, char const *argv[])
+{
+    TRY
+    {
+        printf("Kết quả: %f\n", divide(0,0));
+    }
+    CATCH(DIVIDE_BY_ZERO)
+    {
+        printf("Chia cho 0!\n");
+    }
+    CATCH(NO_EXIT)
+    {
+        printf("Không tồn tại!\n");
+    }
+
+    printf("Hello world\n");
+    return 0;
+}
+
 ```
