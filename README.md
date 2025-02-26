@@ -91,11 +91,7 @@ Quá trình compile sẽ bao gồm các bước sau:
 
 - **Preprocessing** (Tiền xử lý):
 
-    - Quá trình sẽ chuyển các file (.c;.cpp;.h) sang file .i, với cú pháp để thực hiện quá trình trong terminal (IDE VScode) như sau:
-
-<br>
-
-            ``` gcc -E file.c -o file.i ```
+    - Quá trình sẽ chuyển các file (.c;.cpp;.h) sang file .i, với cú pháp trong terminal (IDE VScode) như sau: ``` gcc -E file.c -o file.i ```
       
     - Quá trình này bao gồm các công việc:
 
