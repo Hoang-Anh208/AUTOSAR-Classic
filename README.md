@@ -87,64 +87,56 @@ Lớp này cung cấp một giao diện trừu tượng cho tất cả các thi�
 
 ### B. Quá trình compile (Compiler Process)
 
-- Quá trình compile sẽ bao gồm các bước sau:
+Quá trình compile sẽ bao gồm các bước sau:
 
-    - ****Preprocessing**** (Tiền xử lý): Quá trình sẽ chuyển các file (.c;.cpp;.h) sang file .i 
+- ****Preprocessing**** (Tiền xử lý):
 
-<br>
+    + Quá trình sẽ chuyển các file (.c;.cpp;.h) sang file .i, với cú pháp để thực hiện quá trình trong terminal (IDE VScode) như sau: ``` gcc -E file.c -o file.i ```
+    + Quá trình này bao gồm các công việc:
+
+**Include Header**: Tìm kiếm và chèn mã nguồn
 
 ```cpp
-Cú pháp để thực hiện quá trình trong terminal (IDE VScode) như sau:
-gcc -E file.c -o file.i
+Ex.h (Ví dụ cho file.h)
+#ifndef EX_H
+#define EX_H
+printf("Đây là file.h");
+#endif
+
+file.c (Ví dụ cho file.c)
+#include "Ex.h"
+printf("Đây là dòng code dưới dòng code trong file.h");
+
+file.i (Quá trình preprocessing sẽ biên dịch từ file.c sang file.i như sau)
+#ifdef EX_H
+#define EX_H
+printf("Đây là file.h");
+#endif
+printf("Đây là dòng code dưới dòng code trong file.h");
 ```
 
-    Quá trình này bao gồm các công việc:
-  
-  <br>
-  
-        * **Include Header**: Tìm kiếm và chèn mã nguồn
-  
-        ```cpp
-        Ex.h (Ví dụ cho file.h)
-        #ifndef EX_H
-        #define EX_H
-        printf("Đây là file.h");
-        #endif
-        
-        file.c (Ví dụ cho file.c)
-        #include "Ex.h"
-        printf("Đây là dòng code dưới dòng code trong file.h");
-        
-        file.i (Quá trình preprocessing sẽ biên dịch từ file.c sang file.i như sau)
-        #ifdef EX_H
-        #define EX_H
-        printf("Đây là file.h");
-        #endif
-        printf("Đây là dòng code dưới dòng code trong file.h");
-        ```
+**Delete Comment**: Xóa đi các dòng comment
 
-        * **Delete Comment**: Xóa đi các dòng comment
-  
-        ```cpp
-        file.c
-        // Dòng này sẽ bị xóa
-        printf("Dòng code này thì không bị xóa");
-  
-        file.i (Khi này file.i sẽ không còn dòng commnent nữa)
-        printf("Dòng code này thì không bị xóa");
-        ```
-  
-        * **Expand Macro**: Thay thế các macro, chỉ có tác dụng thay thế như thay thế văn bản
-  
-        ```cpp
-        file.c
-        #define LED 17
-        #define BUZZER 16
+```cpp
+file.c
+// Dòng này sẽ bị xóa
+printf("Dòng code này thì không bị xóa");
 
-        digitalWrite(LED, HIGH);
-        digitalWrite(BUZZER, LOW);
+file.i (Khi này file.i sẽ không còn dòng commnent nữa)
+printf("Dòng code này thì không bị xóa");
+```
 
-        file.i
-        digitalWrite(17, HIGH);
-        digitalWrite(16, LOW);
-        ```
+**Expand Macro**: Thay thế các macro, chỉ có tác dụng thay thế như thay thế văn bản
+
+```cpp
+file.c
+#define LED 17
+#define BUZZER 16
+
+digitalWrite(LED, HIGH);
+digitalWrite(BUZZER, LOW);
+
+file.i
+digitalWrite(17, HIGH);
+digitalWrite(16, LOW);
+```
